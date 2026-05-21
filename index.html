@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+
+<html lang="bg">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>VSH Crafted - Дизайн, изкуство и вкус в една палитра</title>
+
+    
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@200;300;400;700&family=Spectral:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+
+
+    <style>
+
+        /* ПЛАВНО СКРОЛВАНЕ */
+
+        html { scroll-behavior: smooth; }
+
+
+
+        :root {
+
+            --color-bg: #737B4C; 
+
+            --color-text: #7C563D; 
+
+            --color-heading: #E8B752; 
+
+            --color-accent: #737B4C; 
+
+            --color-accent-dark: #5A613C;
+
+            --color-dark-surface: #43452D; 
+
+            --color-light-text: #E9DFC6;  
+
+        }
+
+
+
+        html, body {
+
+            margin: 0; padding: 0;
+
+            width: 100%; overflow-x: hidden;
+
+        }
+
+
+
+        body {
+
+            font-family: 'Noto Sans JP', sans-serif;
+
+            color: var(--color-light-text);
+
+            line-height: 1.5;
+
+            background-color: var(--color-bg);
+
+        }
+
+
+
+        h1, h2, h3 {
+
+            font-family: 'Spectral', serif;
+
+            color: var(--color-heading);
+
+            line-height: 1.2;
+
+            margin: 0;
+        }
+
+
+
+        /* === HEADER (ОПРАВЕН И ОЛЕКОТЕН) === */
+header {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    padding: 0 80px; 
+    background-color: var(--color-dark-surface);
+    position: fixed; 
+    width: 100%; 
+    top: 0; 
+    z-index: 1000;
+    box-sizing: border-box; 
+    transition: all 0.3s ease-in-out; 
+    height: 60px;
+}
+
+header.scrolled { 
+    height: 45px; 
+    background: rgba(67, 69, 45, 0.95); 
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1); 
+}
+
+.logo { display: flex; align-items: center; height: 100%; }
+.logo img { display: block; height: 40px; transition: 0.3s; width: auto; object-fit: contain; }
+header.scrolled .logo img { height: 28px; }
+
+nav { display: flex; align-items: center; gap: 30px; }
+nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 30px; }
+
+/* ЕДИНЕН И ЛЕК ШРИФТ ЗА ВСИЧКИ ЛИНКОВЕ */
+nav a, .lang-link { 
+    text-decoration: none; 
+    color: var(--color-light-text); 
+    font-weight: 200; /* Тук е магията - ултра лек шрифт */
+    font-size: 13px; 
+    letter-spacing: 2px; /* Повече въздух за по-добра четимост на тънкия шрифт */
+    transition: all 0.3s ease; 
+    display: inline-block;
+text-transform: uppercase;
+}
+
+/* Гарантираме лекотата при скрол и ховър */
+header.scrolled nav a, 
+header.scrolled .lang-link,
+nav a:hover, 
+.lang-link:hover { 
+    font-weight: 200; 
+}
+
+nav a:hover, .lang-link:hover { 
+    color: var(--color-heading); 
+}
+
+/* АКТИВЕН ЛИНК - малко по-плътен (300), за да се отличава без да тежи */
+nav ul li a.active {
+    color: var(--color-heading) !important;
+    font-weight: 300 !important; 
+    pointer-events: none;
+    cursor: default;
+}
+
+/* ЕЗИКОВА ЛЕНТА - запазва разделението */
+.lang-link { 
+    border-left: 1px solid rgba(233, 223, 198, 0.4); 
+    padding-left: 10px; 
+    margin-left: 10px; 
+    opacity: 0.8; 
+}
+
+.lang-link:hover {
+    opacity: 1;
+}
+
+
+/* Опционално: чертичка под активния линк за още по-визуално разграничаване 
+nav ul li a.active::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: var(--color-heading);
+    margin-top: 2px;
+}*/
+
+        /* === HERO === */
+
+        .hero {
+
+            display: flex; align-items: center; justify-content: center;
+
+            min-height: 100vh;
+
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+
+                        url('images/banner.png') no-repeat center center;
+
+            background-size: cover;
+
+            text-align: center; padding: 0 50px;
+
+            box-sizing: border-box;
+
+        }
+
+
+
+        .hero-content { max-width: 800px; color: #E9DFC6; }
+
+.hero-content h1 {
+    font-size: 30px;
+    margin-bottom: 10px;
+    letter-spacing: 1px; /* Добави това за по-ефирен вид */
+}
+
+        .btn-contact {
+
+            display: inline-block;
+
+            background-color: var(--color-accent-dark);
+
+            color: white;
+
+            text-decoration: none;
+
+            padding: 14px 40px;
+
+            border-radius: 30px;
+
+            transition: all 0.3s ease;
+
+            border: none;
+
+            margin-top: 20px;
+
+            font-weight: 300;
+
+        }
+
+
+
+        .btn-contact:hover {
+
+            background-color: var(--color-heading);
+
+            color: var(--color-dark-surface);
+
+            transform: scale(1.05);
+
+        }
+
+
+
+        /* === PROJECTS === */
+
+        .projects { padding: 60px 80px 100px 80px; max-width: 1200px; margin: 0 auto; }
+
+        .projects-heading { text-align: center; font-size: 32px; font-weight: 400; margin-bottom: 60px; color: #E9DFC6; }
+
+        .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+
+        .project-item { 
+
+            background-color: white; 
+
+            border-radius: 15px; 
+
+            overflow: hidden; 
+
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
+
+            transition: transform 0.3s ease; 
+	animation: fadeInUp 0.8s ease forwards;
+
+        }
+
+        .project-item:hover { transform: translateY(-15px) !important; 
+    /* 0 (наляво/надясно) 25px (надолу) 50px (размиване) и прозрачен цвят на повърхността */
+    box-shadow: 0 25px 50px rgba(67, 69, 45, 0.6); 
+    
+    transition: transform 0.4s ease, box-shadow 0.4s ease; }
+
+
+/* Когато мишката е върху .project-item, промени цвета само на h3 вътре в него */
+
+.project-item:hover .project-details h3 {
+
+    color: var(--color-heading); /* Използваме Honey Yellow акцента */
+
+    transition: color 0.3s ease;
+
+}
+       
+    .project-image { 
+    width: 100%; 
+    height: 300px; /* Фиксирана височина на "кутията" */
+    background-color: #dcd6c5; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    overflow: hidden; /* Важно: изрязва всичко, което излиза извън 300-те пиксела */
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%; /* Принуждаваме снимката да заеме цялата височина на контейнера */
+    object-fit: cover; /* Разтяга и изрязва снимката, така че да запълни кутията без деформации */
+    object-position: center; /* Центрира фокуса на снимката (да не реже глави или важни части) */
+    display: block;
+}
+
+        .project-details { padding: 25px; color: var(--color-text); }
+
+        .project-details h3 { color: var(--color-text); font-size: 20px; margin-bottom: 10px; transition: color 0.3s ease; /* Добавено за плавност */ }
+
+        .project-details p { font-weight: 300; font-size: 15px; margin: 0; }
+
+
+/* === ABOUT SECTION (Коя съм аз) === */
+.about-section {
+    background-color: var(--color-light-text); /* Светлият кремав цвят */
+    padding: 100px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+}
+
+.about-container {
+    max-width: 1200px;
+    display: flex;
+    align-items: center;
+    gap: 80px;
+}
+
+.about-image {
+    flex: 1;
+    position: relative;
+margin-top: -40px;
+}
+
+.about-image img {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    border-radius: 60px 5px 60px 5px; /* Интересна асиметрична форма */
+    box-shadow: 20px 20px 0px var(--color-bg); /* Декоративна сянка-рамка */
+}
+
+.about-content {
+    flex: 1.2;
+    color: var(--color-text);
+}
+
+.about-content h2 {
+    font-size: 42px;
+margin-top: -15px;
+    margin-bottom: 25px;
+    color: var(--color-text); /* Тъмно кафяво за четливост върху светлия фон */
+}
+
+.about-content p {
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+
+        /* === FOOTER === */
+
+        footer { background-color: var(--color-dark-surface); padding: 70px 80px 40px 80px; }
+
+
+        .footer-container { 
+
+            max-width: 1200px; 
+            margin: -30px auto; 
+
+            display: flex; 
+
+            justify-content: space-between; 
+
+            align-items: center; }
+
+        .footer-left { display: flex;
+
+            flex-direction: column;
+
+            justify-content: space-between; }
+
+
+        .footer-logo-box { 
+
+            border-left: 1px solid rgba(233, 223, 198, 0.3); 
+
+            padding: 25px 0 15px 40px; 
+
+            display: flex;
+
+            align-items: center;
+		margin-bottom: 90px;
+        }
+
+        .footer-logo-box img { height: 50px; filter: brightness(1.1); }
+
+
+        .social-icons {
+    margin: 20px 0 0 0;
+    display: flex;
+    gap: 25px;
+}
+
+        .social-icons a { 
+
+            text-decoration: none; 
+
+            color: var(--color-light-text); 
+
+            font-weight: 260; 
+
+            font-size: 13px; 
+
+            text-transform: uppercase; 
+
+            letter-spacing: 1.3px; 
+
+            opacity: 0.8; 
+
+            transition: all 0.3s ease; 
+
+        }
+
+        .social-icons a:hover { color: var(--color-heading); opacity: 1; letter-spacing: 2px; }
+
+/* Стил за имейла над социалните мрежи */
+
+/* Стил за имейла (копира поведението на social-icons a) */
+.footer-email {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--color-light-text);
+    font-weight: 250;
+    font-size: 12px;
+    letter-spacing: 1.3px;
+    opacity: 0.8;
+    transition: all 0.3s ease; /* Плавен преход */
+}
+
+/* Контейнер за имейла */
+.email-wrapper {
+    margin-bottom: 0px; /* Разстояние до социалните мрежи */
+}
+
+/* Стил за текста "Пишете ми тук:" */
+.email-label {
+    display: block;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    opacity: 0.5;
+    color: var(--color-light-text);
+    margin-bottom: 8px;
+margin-top: 10px;
+font-weight: 250;
+}
+
+/* ЕФЕКТЪТ ПРИ ХОВЪР (същият като на социалните мрежи) */
+.footer-email:hover {
+    color: var(--color-heading); /* Сменя на Honey Yellow */
+    opacity: 1;
+    letter-spacing: 2px; /* Леко се разтяга */
+}
+
+
+/* Корекция на Copyright, за да е най-отдолу */
+
+.copyright {
+
+    margin-top: 50px !important;
+margin-bottom: 30px;
+    font-size: 12px !important;
+font-weight: 230;
+    opacity: 0.4 !important;
+letter-spacing: 1px;
+}
+
+
+
+        /* === RESPONSIVE === */
+
+        @media (max-width: 1024px) {
+
+            header { padding: 10px 40px; }
+
+            nav { gap: 20px; }
+
+            nav ul { gap: 20px; }
+
+            .logo img { height: 35px; }
+
+.footer-logo-box { 
+    border-left: 1px solid rgba(233, 223, 198, 0.3); 
+    padding: 10px 0 10px 40px; 
+    display: flex;
+    align-items: center;
+    margin-bottom: 150px;
+margin-left: 60px;
+}
+
+ .social-icons { margin: 10px 0 0 0; display: center; gap: 15px; }
+  .social-icons a { text-decoration: none; color: var(--color-light-text); font-weight: 260; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.8; transition: all 0.3s ease; }
+
+        }
+
+
+
+        @media (max-width: 768px) {
+
+            header { padding: 15px 20px; flex-direction: column; height: auto !important; }
+
+            nav { flex-direction: column; gap: 15px; margin-top: 15px; }
+
+            nav ul { gap: 15px; flex-wrap: wrap; justify-content: center; }
+
+nav a {
+
+        font-size: 14px; /* Една идея по-малък шрифт за мобилни */
+
+        font-weight: 300; /* Гарантираме, че остава лек */}
+
+            .lang-link { 
+
+        border-left: none; 
+
+        padding-left: 0; 
+
+        margin-left: 0; 
+
+        border-top: 1px solid rgba(233, 223, 198, 0.3); 
+
+        padding-top: 12px; 
+
+        width: 60%; 
+
+        text-align: center;
+
+        font-weight: 300; /* На телефон може да е една идея по-четлив */
+
+font-size: 13px;  /* Правим го съвсем дискретен */
+
+        letter-spacing: 2px;
+
+        opacity: 0.9;}
+
+            .projects-grid { grid-template-columns: 1fr; }
+
+.about-container { 
+        flex-direction: column; 
+        gap: 30px; 
+        text-align: center;
+        display: flex; /* Гарантираме, че е flex за да работи order */
+    }
+
+    .about-content h2 {
+        order: -1; /* Заглавието отива най-отгоре */
+        margin-bottom: 20px;
+    }
+
+    .about-image {
+        order: 1; /* Снимката отива в средата */
+        width: 100%;
+    }
+
+    .about-content p {
+        order: 2; /* Текстът отива най-отдолу */
+    }
+
+    .about-image img {
+        max-width: 350px; /* Малко по-компактна снимка за телефон */
+        border-radius: 60px 5px 60px 5px; /* Интересна асиметрична форма */
+	box-shadow: 20px 20px 0px var(--color-bg);
+    }
+
+	/* Футър */
+
+           .footer-container { flex-direction: column-reverse; 
+        gap: 40px; 
+        text-align: center; align-items: center;}
+            .footer-logo-box { border-left: none; /* Премахва вертикалната линия */
+        border-bottom: 1px solid rgba(233, 223, 198, 0.3); /* Добавя хоризонтална линия отдолу за стил */
+        padding: 0 0 20px 0; /* Махаме левия паддинг и добавяме долен */
+        margin-bottom: 0px;
+	margin-left: 0px;
+	display: flex;
+        justify-content: center; /* ТОВА ЦЕНТРИРА ЛОГОТО */
+        width: 100%; } 
+
+  .social-icons { 
+        justify-content: center; /* Центрира социалните икони */
+        margin: 20px 0; 
+     gap: 15px; }
+        }
+
+/* Анимация за плавно появяване */
+@keyframes fadeInUp {
+    from { 
+        opacity: 0; 
+        transform: translateY(30px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+/* Прилагане на анимацията към главните елементи */
+.hero-content {
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+.project-item {
+    background-color: white; 
+    border-radius: 15px; 
+    overflow: hidden; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+/* Добавяме това за плавно движение при ховър */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+/* Добавяме малко забавяне за всеки проект, за да се появяват един след друг */
+.project-item:nth-child(1) { animation-delay: 0.2s; }
+.project-item:nth-child(2) { animation-delay: 0.4s; }
+.project-item:nth-child(3) { animation-delay: 0.6s; }
+
+
+
+    </style>
+
+</head>
+
+<body>
+
+
+
+    <header>
+
+        <a href="index.html" class="logo">
+
+            <img src="images/cloth.color.logo.png" alt="VSH Crafted Logo">
+
+        </a>
+
+        <nav>
+
+            <ul>
+
+                <li><a href="index.html" class="active">Начало</a></li>
+        <li><a href="design.html">Дизайн</a></li>
+        <li><a href="art.html">Изкуство</a></li>
+        <li><a href="cuisine.html">Кулинария</a></li>
+        <li><a href="#footer-anchor">Контакти</a></li>
+            </ul>
+
+            <a href="index-en.html" class="lang-link">ENG</a>
+
+        </nav>
+
+    </header>
+
+
+
+    <section id="home" class="hero">
+
+        <div class="hero-content">
+
+            <h1>Добре дошли в моята артистична вселена.</h1>
+
+            <p>Дизайн, изкуство и вкус в една палитра. Тук ще намерите моите творби и страсти, показани в хармония в едно пространство изградено от мен.</p>
+
+            <a href="#footer-anchor" class="btn-contact">Свържи се с мен</a>
+
+        </div>
+
+    </section>
+
+
+
+    <section class="projects">
+    <h2 class="projects-heading">Избрани проекти</h2>
+
+    <div class="projects-grid">
+    <div class="project-item">
+        <a href="projects-design/project-branding.html" style="text-decoration: none; color: inherit; display: block; height: 100%;">
+            <div class="project-image">
+                <img src="images/design-projects/Fruity-baker/fruity-baker-logo1.png" alt="Брандинг Проект">
+            </div>
+            <div class="project-details">
+                <h3>Брандинг Проект</h3>
+                <p>Пример за графичен дизайн и идентичност.</p>
+            </div>
+        </a>
+    </div>
+
+        <div class="project-item">
+            <a href="projects-art/project-painting1.html" style="text-decoration: none; color: inherit; display: block; height: 100%;">
+                <div class="project-image">
+                    <img src="images/art-projects/tokan/tokan.jpg" alt="Тукан">
+                </div>
+                <div class="project-details">
+                    <h3>Картина "Тукан"</h3>
+                    <p>Творческа работа с акрилни бои.</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="project-item">
+            <a href="recipes/recipe-bread.html" style="text-decoration: none; color: inherit; display: block; height: 100%;">
+                <div class="project-image">
+                    <img src="images/recipes/bread.png" alt="Домашен хляб">
+                </div>
+                <div class="project-details">
+                    <h3>Рецепта за хляб с лимец</h3>
+                    <p>Интересна рецепта или стилна фотография.</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="about-section">
+    <div class="about-container">
+        <div class="about-image">
+            <img src="images/Photo.who.am.i.png" alt="Валентина - VSH Crafted">
+        </div>
+        <div class="about-content">
+            <h2>Коя съм аз?</h2>
+            <p>	Аз съм Валентина Щебетовска – създателят зад <strong>VSH Crafted</strong>. Моят път е пресечна точка между прецизността на графичния дизайн, емоцията на приложното изкуство и топлината на кулинарията.</p>
+            <p>Вярвам, че всичко, направено с ръце и сърце, носи особена енергия. Тук споделям моя творчески път – от брандинг концепции до ръчно рисувани детайли и вкусни моменти от кухнята.</p>
+        </div>
+    </div>
+</section>
+
+    <footer id="footer-anchor">
+
+    <div class="footer-container">
+
+        <div class="footer-left">
+
+            <div class="email-wrapper">
+        <span class="email-label">Пишете ми тук:</span>
+        <a href="mailto:valya.shtebetovska@gmail.com" class="footer-email">valya.shtebetovska@gmail.com</a>
+    </div>
+
+            <div class="social-icons">
+
+                <a href="https://instagram.com/твоят_личен_профил" target="_blank">Instagram (Personal)</a>
+
+                <a href="https://instagram.com/vsh_crafted" target="_blank">Instagram (VSH Crafted)</a>
+
+                <a href="https://facebook.com/твоята_страница" target="_blank">Facebook</a>
+
+            </div>
+
+            
+
+            <p class="copyright">&copy; 2026 VSH Crafted. Всички права запазени.</p>
+
+        </div>
+
+        <div class="footer-right">
+
+            <div class="footer-logo-box">
+
+                <a href="index.html">
+        <img src="images/cloth.color.logo.png" alt="VSH Crafted Logo">
+    </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+    <script>
+
+        window.addEventListener('scroll', function() {
+
+            const header = document.querySelector('header');
+
+            if (window.scrollY > 50) {
+
+                header.classList.add('scrolled');
+
+            } else {
+
+                header.classList.remove('scrolled');
+
+            }
+
+        });
+
+    </script>
+
+
+
+</body>
+
+</html>
